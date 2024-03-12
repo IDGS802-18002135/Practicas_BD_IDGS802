@@ -1,0 +1,227 @@
+{% extends "layout2.html" %} 
+{%import "_macros.html" as macros%}
+{%from "_macros.html" import render_field%}
+{%block content %}  
+<style>
+    .seleccionada {
+        background-color: yellow;
+    }
+</style>
+
+<script>
+    
+   
+  
+    // Función para seleccionar/deseleccionar una fila
+    function sumarTotal(){
+       
+     
+
+    }
+
+    function seleccionarFila(fila) {
+        if (fila.classList.contains('seleccionada')) {
+            fila.classList.remove('seleccionada');
+        }else{
+            fila.classList.add('seleccionada');
+        }
+    }
+    function confirmar(){
+
+        var elementosSubtotal = document.getElementsByName("subtotal");
+        var sumaSubtotal = 0;
+        if (elementosSubtotal.length > 0) {
+            for (var i = 0; i < elementosSubtotal.length; i++) {
+                var subtotal = parseInt(elementosSubtotal[i].innerText); 
+                sumaSubtotal =sumaSubtotal + subtotal;
+               
+            }
+            
+            
+        } else {
+            // No hay elementos con el nombre "subtotal"
+           
+        }
+        
+
+        if (sumaSubtotal>0){
+            var confirmar = confirm("El total de la orden es: $" + sumaSubtotal + ". ¿Desea continuar?");
+           
+            if (confirmar) {
+                document.getElementById('formularioDatos').querySelector('[name="datos"]').value = sumaSubtotal;
+                document.getElementById('formularioDatos').submit();
+            }else{
+                event.preventDefault(); 
+            }
+        }else{
+            alert("no ha ingresado ordenes aun")
+            event.preventDefault();
+
+        }
+        
+
+        
+        
+    }
+    function quitar() {
+        var respuesta=confirm("¿Desea elminar los elementos seleccionados?")
+
+        if(respuesta){
+            var filasSeleccionadas = document.querySelectorAll('.seleccionada');
+        
+        filasSeleccionadas.forEach(function(filaSeleccionada) {
+            // Eliminar la fila seleccionada de la tabla
+            filaSeleccionada.parentNode.removeChild(filaSeleccionada);
+        });
+        
+        var todasLasFilas = document.querySelectorAll('table tbody tr');
+        var datos = "";
+
+        todasLasFilas.forEach(function(fila) {
+         datos =datos+""+ 
+            fila.cells[0].innerText+"/"+ // tamaño
+            fila.cells[1].innerText+"/"+ // ingredientes
+            fila.cells[2].innerText+"/"+ // numeroPizza
+            fila.cells[3].innerText+"/"+ // subtotal
+            fila.cells[4].innerText+"/"+  // 
+            fila.cells[5].innerText+"/"+
+            fila.cells[6].innerText+"/"+
+            fila.cells[7].innerText+":"
+            
+        ;
+        
+
+        
+        });
+        
+        
+        
+        
+        document.getElementById('formularioPreOrden').querySelector('[name="datos"]').value = datos;
+        document.getElementById('formularioPreOrden').submit();
+        
+        }else{
+            event.preventDefault();
+
+        }
+        
+       
+    }
+    
+</script>
+
+<div class="container">
+    <div class="row">
+    <div class="span3">
+        <form id="formularioOrden"action="" method="post">
+            {{form.csrf_token }}
+
+            
+            
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+    
+            {{macros.input_Form(form.nombre,class="form-control",value=nombreForm)}}
+    </div>
+    <div class="span3">
+        {{macros.input_Form(form.direccion,class="form-control",value=direccionForm)}}
+    </div>
+            
+    <div class="span3">
+        {{macros.input_Form(form.telefono,class="form-control",value=telefonoForm)}}
+    </div>        
+    </div>
+    <div clas="row">
+        <div class="span3", border: 1px solid #d66>{{macros.input_Form(form.tamañoPizza,class="form-control")}}</div>
+        
+        <div class="span3">{{macros.input_Form(form.jamon,class="form-control")}}
+        {{macros.input_Form(form.piña,class="form-control")}}
+        {{macros.input_Form(form.champiñones,class="form-control")}}</div>
+
+        <div class="span3">{{macros.input_Form(form.numeroPizza,class="form-control",value=numeroPizzaForm)}}</div>
+        <div class="span3">{{macros.input_Form(form.fecha,class="form-control",value=fechaForm)}}</div>
+        <div class="span3"><input name="ordenar" type="submit" onclick="" name="btn1"></div>
+        
+        </form>
+    </div>
+    
+    
+    
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="span6">
+            <table class="table table-triped table-bordered">
+                <thead>
+                    <tr onclick="seleccionarFila(this)">
+                        
+                        <th>Tamaño</th>
+                        <th>Ingredientes</th>
+                        <th>Num Pizza</th>
+                        <th >Sub Total</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for pizzaOrden in ordenes%}
+                    
+    
+                    
+                    <tr onclick="seleccionarFila(this)">
+                        
+                        <td>{{pizzaOrden.tamaño}}</td>
+                        <td>{{pizzaOrden.ingredientes}}</td>
+                        <td>{{pizzaOrden.numeroPizza}}</td>
+                        <td name="subtotal">{{pizzaOrden.subtotal}}</td>
+                        
+                        <td class="hidden">{{pizzaOrden.nombre}}</td>
+                        <td class="hidden">{{pizzaOrden.direccion}}</td>
+                        
+                        <td class="hidden">{{pizzaOrden.telefono}}</td>
+                        <td class="hidden">{{pizzaOrden.fecha}}</td>
+                        
+                        
+                        
+                    </tr>
+                    {%endfor%}
+                   
+                </tbody>
+            </table>
+           
+            <form id="formularioDatos" action="" method="post" novalidate>
+                {{form.csrf_token }}
+                <input type="hidden", name ="csrf_token" value="{{csrf_token()}}"/>
+                <input type="hidden" name="datos">
+               
+      
+                <button name="terminarOrden"class="btn btn-warning" type="submit" onclick="confirmar()">Terminar</button>
+            </form>
+            
+            <form id="formularioPreOrden" action="" method="post" novalidate>
+                {{form.csrf_token }}
+                <input type="hidden", name ="csrf_token" value="{{csrf_token()}}"/>
+                <input type="hidden" name="datos">
+               
+                <button name="quitarOrden" class="btn btn-danger" type="submit" onclick="quitar()">Quitar</button>
+                
+            </form>
+            
+
+        </div>
+        <div class="span6">
+            <h1>Ventas del dia</h1>
+            {%for venta in ventas%}
+            <h2>{{venta.nombre}} total ${{venta.subtotal}}</h2>
+            
+            {%endfor%}
+            <h1>Ventas totales del dia: ${{TotalDia}}</h1>          
+
+            <a href="/ventaBusqueda" class="btn" style="color: green;">Ventas por día</a>
+
+        </div>
+    </div>
+</div>
+
+{%endblock%}
+

@@ -1,0 +1,64 @@
+{% extends "layout2.html" %} 
+{%import "_macros.html" as macros%}
+{%from "_macros.html" import render_field%}
+{%block content %}   
+    <script>
+
+    </script>
+    <div class="container">
+         <a class="hidden" href="/Ventas" class="btn" style="color: green;">Ventas por día</a>
+         <a class="hidden" href="/VentasMes" class="btn" style="color: green;">Ventas por mes</a>
+         <a href="/pizzeria" class="btn" style="background-color: green;">Volver</a>
+
+        <h3>VENTAS</h3>
+        <div class="row">
+
+            <form id="busquedaDiaMes" action="" method="post" >
+                {{form.csrf_token }}
+                <input type="hidden", name ="csrf_token" value="{{csrf_token()}}"/>
+                
+                {{macros.input_Form(form.busqueda,class="form-control")}}
+                <input name="ordenar" type="submit" onclick="" name="btn1">
+                
+            </form>
+        </div>
+
+        <div class="row">
+            
+            <table class="table table-triped table-bordered">
+                <h3></h3>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        
+                        <th>Total</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if busqueda %}
+                {% for venta in busqueda %}
+                <tr>
+                    <td>{{ venta.create_dateVenta }}</td>
+                    <td>{{ venta.nombreVenta }}</td>
+                    <td>{{ venta.direccionVenta }}</td>
+                    <td>{{ venta.telefonoVenta }}</td>
+                    <td>{{ venta.totalVenta }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+    <tr>
+        <td colspan="8">No se obtuvieron resultados</td>
+    </tr>
+    
+{% endif %}
+
+                </tbody>
+            </table>
+        </div>
+        <h1 style="text-align: right;">TOTAL: ${{TOTALBUSQUEDA}}</h1>
+    </div>
+{%endblock%}

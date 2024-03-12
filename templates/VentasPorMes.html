@@ -1,0 +1,383 @@
+{% extends "layout2.html" %} 
+{%from "_macros.html" import render_field%}
+{%block content %}  
+    <script>
+
+    </script>
+    <div class="container">
+         <a href="/Ventas" class="btn" style="color: green;">Ventas por día</a>
+         <a href="/VentasMes" class="btn" style="color: green;">Ventas por mes</a>
+        <h3>VENTAS por mes</h3>
+
+        <div class="row">
+            
+            <table class="table table-triped table-bordered">
+                <h3>Enero</h3>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Tamaño</th>
+                        <th>Ingredientes</th>
+                        <th>Num Pizza</th>
+                        <th>Sub total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for venta in enero %}
+                    <tr>
+                        <td>{{ venta.create_date }}</td>
+                        <td>{{ venta.nombre }}</td>
+                        <td>{{ venta.direccion }}</td>
+                        <td>{{ venta.telefono }}</td>
+                        <td>{{ venta.tamaño }}</td>
+                        <td>{{ venta.ingredientes }}</td>
+                        <td>{{ venta.numeroPizza }}</td>
+                        <td>{{ venta.subtotal }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="row">
+            
+            <table class="table table-triped table-bordered">
+                <h3>Febrero</h3>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Tamaño</th>
+                        <th>Ingredientes</th>
+                        <th>Num Pizza</th>
+                        <th>Sub total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for venta in febrero %}
+                    <tr>
+                        <td>{{ venta.create_date }}</td>
+                        <td>{{ venta.nombre }}</td>
+                        <td>{{ venta.direccion }}</td>
+                        <td>{{ venta.telefono }}</td>
+                        <td>{{ venta.tamaño }}</td>
+                        <td>{{ venta.ingredientes }}</td>
+                        <td>{{ venta.numeroPizza }}</td>
+                        <td>{{ venta.subtotal }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            
+            <table class="table table-triped table-bordered">
+                <h3>Marzo</h3>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Tamaño</th>
+                        <th>Ingredientes</th>
+                        <th>Num Pizza</th>
+                        <th>Sub total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for venta in marzo %}
+                    <tr>
+                        <td>{{ venta.create_date }}</td>
+                        <td>{{ venta.nombre }}</td>
+                        <td>{{ venta.direccion }}</td>
+                        <td>{{ venta.telefono }}</td>
+                        <td>{{ venta.tamaño }}</td>
+                        <td>{{ venta.ingredientes }}</td>
+                        <td>{{ venta.numeroPizza }}</td>
+                        <td>{{ venta.subtotal }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        
+<div class="row">
+    <table class="table table-triped table-bordered">
+        <h3>Abril</h3>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Tamaño</th>
+                <th>Ingredientes</th>
+                <th>Num Pizza</th>
+                <th>Sub total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in abril %}
+            <tr>
+                <td>{{ venta.create_date }}</td>
+                <td>{{ venta.nombre }}</td>
+                <td>{{ venta.direccion }}</td>
+                <td>{{ venta.telefono }}</td>
+                <td>{{ venta.tamaño }}</td>
+                <td>{{ venta.ingredientes }}</td>
+                <td>{{ venta.numeroPizza }}</td>
+                <td>{{ venta.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<div class="row">
+    <table class="table table-triped table-bordered">
+        <h3>Mayo</h3>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Tamaño</th>
+                <th>Ingredientes</th>
+                <th>Num Pizza</th>
+                <th>Sub total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in mayo %}
+            <tr>
+                <td>{{ venta.create_date }}</td>
+                <td>{{ venta.nombre }}</td>
+                <td>{{ venta.direccion }}</td>
+                <td>{{ venta.telefono }}</td>
+                <td>{{ venta.tamaño }}</td>
+                <td>{{ venta.ingredientes }}</td>
+                <td>{{ venta.numeroPizza }}</td>
+                <td>{{ venta.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<div class="row">
+    <table class="table table-triped table-bordered">
+        <h3>Junio</h3>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Tamaño</th>
+                <th>Ingredientes</th>
+                <th>Num Pizza</th>
+                <th>Sub total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in junio %}
+            <tr>
+                <td>{{ venta.create_date }}</td>
+                <td>{{ venta.nombre }}</td>
+                <td>{{ venta.direccion }}</td>
+                <td>{{ venta.telefono }}</td>
+                <td>{{ venta.tamaño }}</td>
+                <td>{{ venta.ingredientes }}</td>
+                <td>{{ venta.numeroPizza }}</td>
+                <td>{{ venta.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<div class="row">
+    <table class="table table-triped table-bordered">
+        <h3>Julio</h3>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Tamaño</th>
+                <th>Ingredientes</th>
+                <th>Num Pizza</th>
+                <th>Sub total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in julio %}
+            <tr>
+                <td>{{ venta.create_date }}</td>
+                <td>{{ venta.nombre }}</td>
+                <td>{{ venta.direccion }}</td>
+                <td>{{ venta.telefono }}</td>
+                <td>{{ venta.tamaño }}</td>
+                <td>{{ venta.ingredientes }}</td>
+                <td>{{ venta.numeroPizza }}</td>
+                <td>{{ venta.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<div class="row">
+    <table class="table table-triped table-bordered">
+        <h3>Agosto</h3>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Tamaño</th>
+                <th>Ingredientes</th>
+                <th>Num Pizza</th>
+                <th>Sub total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in agosto %}
+            <tr>
+                <td>{{ venta.create_date }}</td>
+                <td>{{ venta.nombre }}</td>
+                <td>{{ venta.direccion }}</td>
+                <td>{{ venta.telefono }}</td>
+                <td>{{ venta.tamaño }}</td>
+                <td>{{ venta.ingredientes }}</td>
+                <td>{{ venta.numeroPizza }}</td>
+                <td>{{ venta.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <table class="table table-triped table-bordered">
+        <h3>Septiembre</h3>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Tamaño</th>
+                <th>Ingredientes</th>
+                <th>Num Pizza</th>
+                <th>Sub total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in septiembre %}
+            <tr>
+                <td>{{ venta.create_date }}</td>
+                <td>{{ venta.nombre }}</td>
+                <td>{{ venta.direccion }}</td>
+                <td>{{ venta.telefono }}</td>
+                <td>{{ venta.tamaño }}</td>
+                <td>{{ venta.ingredientes }}</td>
+                <td>{{ venta.numeroPizza }}</td>
+                <td>{{ venta.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <table class="table table-triped table-bordered">
+        <h3>Noviembre</h3>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Tamaño</th>
+                <th>Ingredientes</th>
+                <th>Num Pizza</th>
+                <th>Sub total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in noviembre %}
+            <tr>
+                <td>{{ venta.create_date }}</td>
+                <td>{{ venta.nombre }}</td>
+                <td>{{ venta.direccion }}</td>
+                <td>{{ venta.telefono }}</td>
+                <td>{{ venta.tamaño }}</td>
+                <td>{{ venta.ingredientes }}</td>
+                <td>{{ venta.numeroPizza }}</td>
+                <td>{{ venta.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<div class="row">
+    <table class="table table-triped table-bordered">
+        <h3>Diciembre</h3>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Tamaño</th>
+                <th>Ingredientes</th>
+                <th>Num Pizza</th>
+                <th>Sub total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in diciembre %}
+            <tr>
+                <td>{{ venta.create_date }}</td>
+                <td>{{ venta.nombre }}</td>
+                <td>{{ venta.direccion }}</td>
+                <td>{{ venta.telefono }}</td>
+                <td>{{ venta.tamaño }}</td>
+                <td>{{ venta.ingredientes }}</td>
+                <td>{{ venta.numeroPizza }}</td>
+                <td>{{ venta.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+        
+        
+        
+    
+        
+        
+    </div>
+{%endblock%}
